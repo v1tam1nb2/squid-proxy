@@ -1,0 +1,13 @@
+services:
+  proxy:
+    image: ubuntu/squid:latest
+    container_name: proxy
+    hostname: proxy
+    restart: always
+    ports:
+      - "3128:3128"
+    environment:
+      - TZ=Asia/Tokyo
+    volumes:
+      - ./config/squid.conf:/etc/squid/squid.conf
+      - ./config/whitelist:/etc/squid/whitelist
